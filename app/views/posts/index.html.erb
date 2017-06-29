@@ -1,7 +1,10 @@
 <% @posts.reverse.each do |post| %>
   <div id=<%= post.id %> >
-    <%= simple_format(post.message) %>
-    <%= post.created_at.strftime('at %R on %d/%m/%y') %>
+  <%= simple_format(post.message) %>
+  Posted by
+  <%= link_to "#{post.user.username}", post.user %>
+
+  <%= post.created_at.strftime('at %R on %d/%m/%y') %>
   likes: <%= post.likes.count %> </br>
   <br>
   <%= link_to 'Comments', post_path(post) %>
@@ -9,6 +12,7 @@
   <%= button_to post_likes_path(post) do %>
     Like
   <% end %>
+
 <% end %>
 
 <% if current_user %>
