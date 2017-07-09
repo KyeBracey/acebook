@@ -2,7 +2,7 @@
   <br>
   <h1><%= @user.username %>'s Profile</h1>
   <div id="avatar" class="avatar">
-    <%  if @user.avatar.file.nil? %>
+    <% if @user.avatar.file.nil? %>
       <img src="/assets/default_avatar.png" alt="default avatar">
     <% else %>
       <img src="<%= @user.avatar.url %>">

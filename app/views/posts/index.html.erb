@@ -9,8 +9,8 @@
   <br>
   <%= link_to 'Comments', post_path(post) %>
 
-  <% if current_user && !post.likes.nil?{ |like| like.user_id != current_user.id} %>
-    <%= button_to post_likes_path(post) do %>
+  <% if current_user && !post.likes.any?{ |like| like.user == current_user} %>
+    <%= button_to post_likes_path(post), id: "post#{post.id}-like" do %>
     Like
     <% end %>
   <% end %>
